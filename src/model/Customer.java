@@ -21,6 +21,10 @@ public class Customer {
         return email.matches(regex);
     }
 
+    public String getEmail(){
+        return email;
+    }
+
     @Override
     public String toString() {
         return "First Name: " + firstName +
