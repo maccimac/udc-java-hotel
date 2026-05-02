@@ -13,5 +13,6 @@ public class Main {
         Customer j = new Customer("Josh", "Rizal", "jkr@mail.net");
 //        Customer jb = new Customer("Josh", "Rizal", "jkr@mail.betlogshorts");
 
+
     }
 }
