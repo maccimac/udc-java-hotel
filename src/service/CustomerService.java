@@ -13,7 +13,10 @@ public class CustomerService {
     private static Set<Customer> customersSet = new HashSet<>();
     private static Map<String, Customer> customersMap = new HashMap<>();
 
-    public static void addCustomer(String email, String firstName, String lastName) throws Exception {
+    public CustomerService(){
+
+    }
+    public Customer addCustomer(String firstName, String lastName, String email) throws Exception {
         if( getCustomer(email) != null){
             throw new Exception("Customer with this email already exists");
         }
@@ -21,6 +24,7 @@ public class CustomerService {
                 firstName, lastName, email);
         customersSet.add(customer);
         customersMap.put(email, customer);
+        return customer;
     }
 
     public static Customer getCustomer(String customerEmail){

@@ -41,7 +41,6 @@ public class ReservationService {
 
         IRoom selectedRoom = null;
         for(IRoom room: rooms){
-            System.out.println("looking for " +  room.roomId());
             if( room.roomId().equals(roomId)){
                 selectedRoom = room;
                 break;
@@ -50,13 +49,25 @@ public class ReservationService {
         return selectedRoom;
     };
 
-    public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
-        Reservation reservation = new Reservation(customer, room, checkInDate, checkOutDate);
+    public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate) throws  IllegalStateException{
+        // Check room
+        Collection roomOverlap = findRooms(checkInDate, checkOutDate);
+        if(roomOverlap.size() > 0){
+            for(Object rm: roomOverlap){
+                if(rm.equals(room)){
+                    throw new IllegalStateException("Room " + room.roomId() + " in use");
+                }
+            }
 
+        }
+        Reservation reservation = new Reservation(customer, room, checkInDate, checkOutDate);
         reservations.add(reservation);
         return reservation;
-
     }
+
+//    private Reservation findReservationsByRate(){
+//
+//    };
 
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate){
@@ -94,8 +105,11 @@ public class ReservationService {
         }
     }
 
-//    public void printAllReservation(){
-//
-//    }
+    public void printAllReservation(){
+        for(Reservation rv: reservations){
+            System.out.println(rv.toString());
+        }
+
+    }
 
 }
