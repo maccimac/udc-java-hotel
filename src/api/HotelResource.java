@@ -7,6 +7,11 @@ import model.Reservation;
 import java.util.Collection;
 import java.util.Date;
 
+
+/**
+ * Next you'll need to create the HotelResource class. The HotelResource should have little to no behavior contained inside the class and should make use of the Service classes to implement its methods. The HotelResource will have the following methods:
+ */
+
 public class HotelResource {
 
     // Is this how to "Provide a static reference"?

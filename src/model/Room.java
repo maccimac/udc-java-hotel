@@ -2,11 +2,12 @@ package model;
 
 public class Room implements IRoom{
 
+    public int roomIdNumber;
     String roomNumber;
     Double price;
     RoomType roomType;
 
-    public Room(String roomNumber, double price, RoomType roomType){
+    public Room(String roomNumber, RoomType roomType, double price){
         this.roomNumber = roomNumber;
         this.price = price;
         this.roomType = roomType;
@@ -25,6 +26,14 @@ public class Room implements IRoom{
         return false;
     }
 
+    public int getRoomIdNumber(){
+        return roomIdNumber;
+    }
+    public void setRoomIdNumber(int roomIdNumber){
+        this.roomIdNumber = roomIdNumber;
+    }
+
+
     @Override
     public String toString() {
 
@@ -32,7 +41,18 @@ public class Room implements IRoom{
         if(roomType == RoomType.DOUBLE){
             strRoomType = "double bed room";
         }
-        return "Room# " + roomNumber + "is a " + strRoomType + ". \n"
-                + "It costs $" + price;
+        return "Room number '" + roomNumber +  "' is a " + strRoomType + ". \n"
+                + "It costs $" + price + ". It has room id: " + this.roomId() + "\n";
     }
+
+    public String roomId(){
+        if(roomType == RoomType.DOUBLE){
+            return "p_" + roomNumber + "_2";
+        }
+        return "p_" + roomNumber + "_1";
+    }
+
+
+
+
 }
