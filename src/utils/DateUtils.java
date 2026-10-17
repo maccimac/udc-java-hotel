@@ -8,11 +8,6 @@ import java.util.IllegalFormatConversionException;
 
 public class DateUtils {
 
-    public static void DateUtils(){
-
-    }
-
-
 
     public Date createDate(String str) throws ParseException {
         try {

@@ -16,14 +16,11 @@ import model.Reservation;
 
 public class ReservationService {
 
+    public static ReservationService reservationServiceInstance = new ReservationService();
 
     Queue<Reservation> reservations = new LinkedList<>();
     List<IRoom> rooms = new LinkedList<IRoom>();
 
-    // This is the constructor right?
-    public ReservationService(){
-        // Set initial reservations?
-    }
     public void addRoom(IRoom room){
         if(rooms.isEmpty()){
             rooms.add(room);

@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 import model.Customer;
 import service.ReservationService;
 
@@ -11,11 +13,14 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("Hello and welcome!");
 
-        Customer j = new Customer("Josh", "Rizal", "jkr@mail.net");
+        Customer j = new Customer("Josh", "Rizal", "jkrs@domain.com");
 //        Customer jb = new Customer("Josh", "Rizal", "jkr@mail.betlogshorts");
 
         ReservationService rs = new ReservationService();
         System.out.println(rs.toString());
 
+
     }
+
+
 }

@@ -10,8 +10,11 @@ import model.Customer;
 
 
 public class CustomerService {
-    private static Set<Customer> customersSet = new HashSet<>();
-    private static Map<String, Customer> customersMap = new HashMap<>();
+    public static CustomerService customerServiceInstance = new CustomerService();
+
+    private static final Set<Customer> customersSet = new HashSet<>();
+    private static final Map<String, Customer> customersMap = new HashMap<>();
+
 
     public CustomerService(){
 
