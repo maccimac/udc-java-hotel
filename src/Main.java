@@ -1,4 +1,9 @@
+import java.lang.classfile.attribute.SyntheticAttribute;
 import java.util.Scanner;
+
+import api.HotelResource;
+import service.CustomerService;
+import model.Customer;
 
 
 public class Main {
@@ -6,16 +11,13 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         System.out.print("Welcome to Udacity Hotel");
         mainMenuFlow();
-
-
 
     }
 
     public static void mainMenuFlow(){
-        System.out.println("Welcome to the main menu!\n");
+        System.out.println("\nWelcome to the main menu!\n");
         int initialInput;
 
         do{
@@ -24,10 +26,17 @@ public class Main {
                 System.out.println("Please enter a valid command.");
             }
         } while(initialInput < 1 || initialInput > 5);
-        System.out.println("You have chosen: " + initialInput);
-        System.out.println("---\n\n");
 
+        if(initialInput == 3){
+            System.out.println("Creating an account");
+            Customer customer = CustomerService.createCustomerFlow();
 
+            System.out.println("\nSuccess. Account created successfully for:\n " + customer.toString());
+            System.out.println("---");
+            
+            // Is this recursive?
+            mainMenuFlow();
+        }
         if(initialInput == 4){
             adminFlow();
         }
@@ -71,9 +80,15 @@ public class Main {
                 System.out.println("Please enter a valid command.");
             }
         } while(input < 1 || input > 5);
-        System.out.println("You have chosen: " + input);
-        System.out.println("---\n");
 
+        if(input == 1){
+            System.out.println("Displaying all customers:" + CustomerService.getAllCustomers());
+
+            System.out.println("---\n");
+            System.out.println("Press anything to go back to admin menu");
+            scanner.nextLine();
+            printAdminMenu();
+        }
         if(input == 5){
             mainMenuFlow();
         }
@@ -105,7 +120,4 @@ public class Main {
         }
         return input;
     }
-
-
-
 }
