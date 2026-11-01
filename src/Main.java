@@ -29,7 +29,7 @@ public class Main {
 
         if(initialInput == 3){
             System.out.println("Creating an account");
-            Customer customer = CustomerService.createCustomerFlow();
+            Customer customer = HotelResource.createCustomerFlow();
 
             System.out.println("\nSuccess. Account created successfully for:\n " + customer.toString());
             System.out.println("---");
@@ -82,14 +82,13 @@ public class Main {
         } while(input < 1 || input > 5);
 
         if(input == 1){
-            System.out.println("Displaying all customers:" + CustomerService.getAllCustomers());
-
-            System.out.println("---\n");
-            System.out.println("Press anything to go back to admin menu");
-            scanner.nextLine();
-            printAdminMenu();
+            HotelResource.printAllCustomers();
+//            System.out.println("Displaying all customers:" + CustomerService.getAllCustomers());
+//            System.out.println("---\n");
+            adminFlow();
         }
         if(input == 5){
+            System.out.println("Back to main menu");
             mainMenuFlow();
         }
 

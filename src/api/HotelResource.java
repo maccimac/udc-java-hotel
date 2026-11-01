@@ -8,13 +8,23 @@ import service.ReservationService;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Scanner;
 
 
 /**
  * Next you'll need to create the HotelResource class.
  * The HotelResource should have little to no behavior contained inside the class and should make use of the Service classes to implement its methods.
  * The HotelResource will have the following methods:
+ *
+ * - [/] getCustomer(String email)
+ * - [/] createACustomer(String email, String firstName, String lastName) or equivalent parameters in the same style
+ * - [] getRoom(String roomNumber)
+ * - [] bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate)
+ * - [] getCustomersReservations(String customerEmail)
+ * - [] findARoom(Date checkIn, Date checkOut)
  */
+
+
 
 public class HotelResource {
 
@@ -27,8 +37,27 @@ public class HotelResource {
         return customerService.getCustomer(email);
     }
 
-    public static void createACustomer( String firstName, String lastName, String email) throws Exception{
-        customerService.addCustomer(firstName, lastName, email);
+    public static Customer createCustomerFlow(){
+
+        Customer customer = null;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your first name: ");
+        String name = scanner.nextLine();
+        System.out.println("Please enter your last name: ");
+        String lastName = scanner.nextLine();
+        System.out.println("Please enter your email: ");
+        String email = scanner.nextLine();
+
+        try{
+            customer = createACustomer(name, lastName, email);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return getCustomer(email);
+    }
+    public static Customer createACustomer( String firstName, String lastName, String email) throws Exception{
+        return customerService.addCustomer(firstName, lastName, email);
     }
 
     public static IRoom getRoom(String roomNumber) {

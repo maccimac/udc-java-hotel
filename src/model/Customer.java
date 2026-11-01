@@ -1,5 +1,4 @@
 package model;
-
 public class Customer {
 
     String firstName;
@@ -27,8 +26,9 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "First Name: " + firstName +
+        return "* First Name: " + firstName +
                 " Last Name: " + lastName +
-                " Email: " + email;
+                " Email: " + email +
+                "\n";
     }
 }
