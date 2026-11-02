@@ -79,7 +79,6 @@ public class ReservationService {
 
 
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate){
-
         Collection<IRoom> matchingRooms = new HashSet<>();
         for(Reservation r: reservations){
             Boolean onOrAfterCheckin = r.getCheckInDate().equals(checkInDate) || r.getCheckInDate().after(checkInDate);

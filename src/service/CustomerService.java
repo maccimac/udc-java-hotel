@@ -28,25 +28,6 @@ public class CustomerService {
 
     }
 
-//    public static Customer createCustomerFlow(){
-//
-//        Customer customer = null;
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Please enter your first name: ");
-//        String name = scanner.nextLine();
-//        System.out.println("Please enter your last name: ");
-//        String lastName = scanner.nextLine();
-//        System.out.println("Please enter your email: ");
-//        String email = scanner.nextLine();
-//
-//        try{
-//            customer = addCustomer(name, lastName, email);
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//
-//        return getCustomer(email);
-//    }
     public static Customer addCustomer(String firstName, String lastName, String email) throws Exception {
         if( getCustomer(email) != null){
             throw new Exception("Customer with this email already exists");

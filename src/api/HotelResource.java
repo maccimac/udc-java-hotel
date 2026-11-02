@@ -1,13 +1,18 @@
 package api;
 
 import model.Customer;
+import model.FreeRoom;
 import model.IRoom;
 import model.Reservation;
+import model.Room;
+import model.RoomType;
 import service.CustomerService;
 import service.ReservationService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -29,14 +34,13 @@ import java.util.Scanner;
 public class HotelResource {
 
     public static final HotelResource hotelResourceInstance = new HotelResource();
-
     static CustomerService customerService = CustomerService.customerServiceInstance;
     static ReservationService reservationService = ReservationService.reservationServiceInstance;
 
+    // CUSTOMER FLOW
     public static Customer getCustomer(String email) {
         return customerService.getCustomer(email);
     }
-
     public static Customer createCustomerFlow(){
 
         Customer customer = null;
@@ -81,14 +85,16 @@ public class HotelResource {
         return reservationService.getCustomersReservation(customer);
     }
 
+    // RESERVATION FLOW
     public static Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
         return null;
     }
 
-    /**
-     * Optional
-     */
 
+
+
+
+    // DISPLAY
     public static void printAllCustomers (){
         System.out.println(":::: ALL CUSTOMERS ::::");
         Collection<Customer> allCustomers = CustomerService.getAllCustomers();
@@ -98,10 +104,10 @@ public class HotelResource {
         System.out.println(":::: /end of list/ ::::");
     }
 
-
     public static void printAllRooms(){
         System.out.println(":::: ALL ROOMS ::::");
         ReservationService.reservationServiceInstance.printAllRooms();
         System.out.println(":::: /end of list/ ::::");
     }
+
 }

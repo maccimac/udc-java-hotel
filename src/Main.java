@@ -11,13 +11,13 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.print("Welcome to Udacity Hotel");
         mainMenuFlow();
 
     }
 
-    public static void mainMenuFlow(){
+    public static void mainMenuFlow() throws Exception {
         System.out.println("\nWelcome to the main menu!\n");
         int initialInput;
 
@@ -70,17 +70,17 @@ public class Main {
         return input;
     }
 
-    public static void adminFlow(){
+    public static void adminFlow() throws Exception {
 
         System.out.println("Welcome, admin!\n");
         int input;
 
         do{
             input = printAdminMenu();
-            if(input < 1 || input > 5){
+            if(input < 1 || input > 6){
                 System.out.println("Please enter a valid command.");
             }
-        } while(input < 1 || input > 5);
+        } while(input < 1 || input > 6);
 
         if(input == 5){
             System.out.println("Back to main menu");
@@ -96,6 +96,9 @@ public class Main {
         }
         if(input == 4){
             AdminResource.addRoomsFlow();
+        }
+        if(input == 6){
+            AdminResource.populateRoomsCustomersReservations();
         }
         adminFlow();
 

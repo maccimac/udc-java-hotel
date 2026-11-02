@@ -26,20 +26,17 @@ import service.ReservationService;
 
 
 public class AdminResource {
-    // Static reference
     public static final AdminResource adminResourceInstance = new AdminResource();
-
-
-
-//    static CustomerService customerService = new CustomerService();
 
     public static Customer getCustomer(String email){
        return CustomerService.getCustomer(email);
     }
 
     public void addRoom(List<IRoom> rooms){
+        System.out.println("These are the new rooms you created:");
         for (IRoom room : rooms){
             ReservationService.reservationServiceInstance.addRoom(room);
+            System.out.println(room);
         }
     }
 
@@ -117,11 +114,39 @@ public class AdminResource {
 
         } // End of while
 
-        System.out.println("These are the new rooms you created:");
-        for (IRoom r: rooms){
-            System.out.println(r.toString());
-            ReservationService.reservationServiceInstance.addRoom(r);
-        }
+        adminResourceInstance.addRoom(rooms);
+
+    }
+
+    // OPTIONAL: POPULATE DATA
+
+    public static void populateRoomsCustomersReservations() throws Exception {
+        System.out.println("Populating...");
+        ArrayList<IRoom> rooms = new ArrayList<IRoom>(
+                List.of(
+                        new FreeRoom("1a", RoomType.SINGLE),
+                        new Room("1b", RoomType.DOUBLE, 100.00),
+                        new Room("1c", RoomType.SINGLE, 60.00),
+                        new Room("2a", RoomType.SINGLE, 70.00),
+                        new Room("2b", RoomType.DOUBLE, 95.00),
+                        new Room("2c", RoomType.DOUBLE, 120.00)
+                )
+        );
+        adminResourceInstance.addRoom(rooms);
+
+        Customer josh = CustomerService.customerServiceInstance.addCustomer(
+                "Josh", "Rizal", "jkr@email.com"
+        );
+        Customer kevin = CustomerService.customerServiceInstance.addCustomer(
+                "Kevin", "Rizal", "kev@email.com"
+        );
+        Customer phil = CustomerService.customerServiceInstance.addCustomer(
+                "Phil", "Rizal", "phil@email.com"
+        );
+
+        System.out.println(CustomerService.customerServiceInstance.getAllCustomers());
+
+
 
     }
 
