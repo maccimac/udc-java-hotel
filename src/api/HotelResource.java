@@ -92,17 +92,7 @@ public class HotelResource {
 
 
 
-
-
     // DISPLAY
-    public static void printAllCustomers (){
-        System.out.println(":::: ALL CUSTOMERS ::::");
-        Collection<Customer> allCustomers = CustomerService.getAllCustomers();
-        allCustomers.forEach(customer -> {
-            System.out.println(customer.toString());
-        });
-        System.out.println(":::: /end of list/ ::::");
-    }
 
     public static void printAllRooms(){
         System.out.println(":::: ALL ROOMS ::::");

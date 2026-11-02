@@ -29,7 +29,7 @@ public class HotelResourceTest {
 
         HotelResource.createACustomer("Julia", "Macaranas", "julia@email.com");
 
-        HotelResource.printAllCustomers();
+        AdminResource.printAllCustomers();
 
         Customer josh = resource.getCustomer("jkr@email.com");
         System.out.println(

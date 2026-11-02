@@ -1,6 +1,7 @@
 package api;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ import model.Room;
 import model.RoomType;
 import service.CustomerService;
 import service.ReservationService;
+import utils.DateUtils;
 
 
 /**
@@ -27,6 +29,7 @@ import service.ReservationService;
 
 public class AdminResource {
     public static final AdminResource adminResourceInstance = new AdminResource();
+    static DateUtils dateUtils = new DateUtils();
 
     public static Customer getCustomer(String email){
        return CustomerService.getCustomer(email);
@@ -113,9 +116,21 @@ public class AdminResource {
              }
 
         } // End of while
-
         adminResourceInstance.addRoom(rooms);
+    }
 
+    // DISPLAY
+    public static void printAllCustomers (){
+        System.out.println(":::: ALL CUSTOMERS ::::");
+        Collection<Customer> allCustomers = CustomerService.getAllCustomers();
+        allCustomers.forEach(customer -> {
+            System.out.println(customer.toString());
+        });
+        System.out.println(":::: /end of list/ ::::");
+    }
+
+    public static void printAllReservations(){
+        ReservationService.reservationServiceInstance.printAllReservation();
     }
 
     // OPTIONAL: POPULATE DATA
@@ -147,7 +162,21 @@ public class AdminResource {
         System.out.println(CustomerService.customerServiceInstance.getAllCustomers());
 
 
+        Reservation r = ReservationService.reservationServiceInstance.reserveARoom(
+                CustomerService.customerServiceInstance.getCustomer("jkr@email.com"),
+                ReservationService.reservationServiceInstance.getARoom("p_1b_2"),
+                dateUtils.createDate("2024-01-01"),
+                dateUtils.createDate("2024-01-05")
+        );
 
+        System.out.println(r.toString());
+
+        Reservation r2 = ReservationService.reservationServiceInstance.reserveARoom(
+                CustomerService.customerServiceInstance.getCustomer("jkr@email.com"),
+                ReservationService.reservationServiceInstance.getARoom("f_1a_1"),
+                dateUtils.createDate("2024-01-01"),
+                dateUtils.createDate("2024-01-05")
+        );
     }
 
 

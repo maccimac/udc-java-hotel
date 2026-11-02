@@ -89,10 +89,13 @@ public class Main {
         }
 
         if(input == 1){
-            HotelResource.printAllCustomers();
+            AdminResource.printAllCustomers();
         }
         if(input == 2){
             HotelResource.printAllRooms();
+        }
+        if(input == 3){
+            AdminResource.printAllReservations();
         }
         if(input == 4){
             AdminResource.addRoomsFlow();
