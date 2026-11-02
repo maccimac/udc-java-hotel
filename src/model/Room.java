@@ -41,8 +41,8 @@ public class Room implements IRoom{
         if(roomType == RoomType.DOUBLE){
             strRoomType = "double bed room";
         }
-        return "Room number '" + roomNumber +  "' is a " + strRoomType + ". \n"
-                + "It costs $" + price + ". It has room id: " + this.roomId() + "\n";
+        return "\n* Room number '" + roomNumber +  "' is a " + strRoomType + ". \n"
+                + "  It costs $" + price + ". It has room id: " + this.roomId() + "\n";
     }
 
     public String roomId(){

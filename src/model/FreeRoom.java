@@ -38,8 +38,8 @@ public class FreeRoom implements IRoom{
         if(roomType == RoomType.DOUBLE){
             strRoomType = "double bed room";
         }
-        return "Room number '" + roomNumber + "' is a " + strRoomType + ". \n"
-                + "It is a free room. It is room id: " + this.roomId() +  "\n";
+        return "\n* Room number '" + roomNumber + "' is a " + strRoomType + ". \n"
+                + "  It is a free room. It is room id: " + this.roomId() +  "\n";
     }
 
     public String roomId(){
