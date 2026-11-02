@@ -2,8 +2,9 @@ package model;
 
 public class Room implements IRoom{
 
-    public int roomIdNumber;
-    String roomNumber;
+
+    public int roomIdNumber; // Unique ID
+    String roomNumber; // Room number
     Double price;
     RoomType roomType;
 
@@ -33,7 +34,6 @@ public class Room implements IRoom{
         this.roomIdNumber = roomIdNumber;
     }
 
-
     @Override
     public String toString() {
 
@@ -51,8 +51,6 @@ public class Room implements IRoom{
         }
         return "p_" + roomNumber + "_1";
     }
-
-
 
 
 }

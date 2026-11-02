@@ -21,6 +21,17 @@ public class ReservationService {
     Queue<Reservation> reservations = new LinkedList<>();
     List<IRoom> rooms = new LinkedList<IRoom>();
 
+    public boolean isRoomNumUnique(String roomNumberToVerify){
+        boolean isRoomUnique = true;
+        for(IRoom r: rooms){
+            if(r.getRoomNumber().equals(roomNumberToVerify)){
+                isRoomUnique = false;
+            }
+        }
+        return  isRoomUnique;
+    }
+
+
     public void addRoom(IRoom room){
         if(rooms.isEmpty()){
             rooms.add(room);

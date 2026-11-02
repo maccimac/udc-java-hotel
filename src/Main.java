@@ -1,6 +1,7 @@
 import java.lang.classfile.attribute.SyntheticAttribute;
 import java.util.Scanner;
 
+import api.AdminResource;
 import api.HotelResource;
 import service.CustomerService;
 import model.Customer;
@@ -81,16 +82,23 @@ public class Main {
             }
         } while(input < 1 || input > 5);
 
-        if(input == 1){
-            HotelResource.printAllCustomers();
-//            System.out.println("Displaying all customers:" + CustomerService.getAllCustomers());
-//            System.out.println("---\n");
-            adminFlow();
-        }
         if(input == 5){
             System.out.println("Back to main menu");
             mainMenuFlow();
+            return;
         }
+
+        if(input == 1){
+            HotelResource.printAllCustomers();
+        }
+        if(input == 2){
+            HotelResource.printAllRooms();
+        }
+        if(input == 4){
+            AdminResource.addRoomsFlow();
+        }
+        adminFlow();
+
 
     }
 
@@ -102,8 +110,9 @@ public class Main {
                 + "2. See all rooms\n"
                 + "3. See all reservations\n"
                 + "4. Add a room\n"
-                + "5. Back to main menu\n\n"
-        );
+                + "5. Back to main menu\n"
+                + "(6. Populate customers, rooms, and reservations)\n\n"
+         );
 
         System.out.print("I choose: ");
         String scannerInput = scanner.nextLine();

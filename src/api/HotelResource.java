@@ -97,4 +97,11 @@ public class HotelResource {
         });
         System.out.println(":::: /end of list/ ::::");
     }
+
+
+    public static void printAllRooms(){
+        System.out.println(":::: ALL ROOMS ::::");
+        ReservationService.reservationServiceInstance.printAllRooms();
+        System.out.println(":::: /end of list/ ::::");
+    }
 }
