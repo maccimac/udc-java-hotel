@@ -48,7 +48,8 @@ public class AdminResource {
         List<IRoom> rooms = new ArrayList<>();
         boolean createMoreRoom = true;
         Scanner scanner = new Scanner(System.in);
-        // while(createMoreRoom = true){
+
+         while(createMoreRoom == true){
 
            // INPUT ROOM PARAMS
             String isFreeYOrN = "_";
@@ -67,7 +68,11 @@ public class AdminResource {
             if(isFreeYOrN.equals("N")) {
                 while (price == 0) {
                     System.out.println("How much is the room?");
-                    price = Double.parseDouble(scanner.nextLine());
+                    try{
+                        price = Double.parseDouble(scanner.nextLine());
+                    }catch(Exception e){
+                        System.out.println("Invalid price, enter a number");
+                    }
                 }
             }
 
@@ -88,27 +93,35 @@ public class AdminResource {
             }
 
             // CREATE THE ROOM
-
             RoomType roomType = RoomType.SINGLE;
             if(singleOrDouble.equals("D")){
                 roomType = RoomType.DOUBLE;
             }
 
-
+            IRoom newRoom;
             if(isFreeYOrN.equals("Y")){
-                rooms.add(new FreeRoom(roomNum, roomType));
+                newRoom = new FreeRoom(roomNum, roomType);
             }else{
-                rooms.add(new Room(roomNum, roomType, price));
+                newRoom = new Room(roomNum, roomType, price);
             }
+            rooms.add(newRoom);
+            System.out.println("New room created: " + newRoom.toString());
 
-            
-//        } // End of while
 
-            for (IRoom r: rooms){
-                System.out.println(r.toString());
-                ReservationService.reservationServiceInstance.addRoom(r);
+            // ASK TO CREATE AGAIN
+             System.out.println("Enter `NEW` to create a new room");
+             String createNewRoom = scanner.nextLine().toUpperCase();
+             if(!createNewRoom.equals("NEW")){
+                 createMoreRoom = false;
+             }
 
-            }
+        } // End of while
+
+        System.out.println("These are the new rooms you created:");
+        for (IRoom r: rooms){
+            System.out.println(r.toString());
+            ReservationService.reservationServiceInstance.addRoom(r);
+        }
 
     }
 
